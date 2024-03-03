@@ -6,7 +6,7 @@ import plotly.express as px
 import calendar
 
 # Assuming 'orders_merge' is your DataFrame
-orders_merge = pd.read_csv("all_data.csv")
+orders_merge = pd.read_csv("./dashboard/all_data.csv")
 
 st.title('Interactive Data Analysis Project')
 st.subheader('E-Commerce Public Dataset in Brazil')
