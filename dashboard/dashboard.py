@@ -14,7 +14,7 @@ st.subheader('E-Commerce Public Dataset in Brazil')
 st.sidebar.header('Salma Mardhiyah')
 
 # Load example image
-example_image = "https://postimg.cc/XZpzbGnM"
+example_image = "https://freeimage.host/i/JMPtJJp"
 
 # Display image in the sidebar
 st.sidebar.image(example_image, use_column_width=True)
@@ -23,7 +23,7 @@ st.sidebar.subheader('Data Appear Parameter')
 year = st.sidebar.multiselect('Select year', ['2017', '2018'], ['2017', '2018'])
 
 # Corrected usage of st.tabs
-tab1, tab2, tab3, tab4 = st.tabs(["year Income", "Payments Type", "Hottest Products", "Unpopular Products"])
+tab1, tab2, tab3, tab4 = st.tabs(["Year Income", "Payments Type", "Hottest Products", "Unpopular Products"])
 
 with tab1:
     st.markdown('### Bar Chart\n')
@@ -70,6 +70,14 @@ with tab2:
     fig.update_layout(legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5))
     st.plotly_chart(fig)
 
+    with st.expander("See explanation"):
+        st.write(
+        """Credit cards are the type of payment most often chosen by customers 
+        when making payment transactions with 74.5% compared 
+        to boleto which is only 20% followed by vouchers and debit cards at 3.9% and 1.6%
+        """ )
+
+
 with tab3:
     st.markdown("### Hottest Products")
 
@@ -79,7 +87,7 @@ with tab3:
     
 
     # Plot the top categories
-    st.markdown(f"#### Top {num_of_products} Product Categories with the Highest Sales:")
+    st.markdown(f"##### Top {num_of_products} Product Categories with the Highest Sales:")
     colors = ["blue"] + ['lightgrey'] * (num_of_products - 1)
     fig, ax = plt.subplots(figsize=(8, 4))
     sns.barplot(x=top_product_category.head(num_of_products).values, y=top_product_category.head(num_of_products).index, palette=colors, orient="h", dodge=False, ax=ax)
@@ -100,7 +108,7 @@ with tab4:
     lowest_index = lowest_product_category.idxmin()
 
     # Plot the bottom categories
-    st.markdown(f"#### Top {num_of_products} Product Categories with the Lowest Sales:")
+    st.markdown(f"##### Top {num_of_products} Product Categories with the Lowest Sales:")
     colors = ['lightgrey'] * (num_of_products - 1) + ["blue"]
     fig, ax = plt.subplots(figsize=(8, 4))
     sns.barplot(x=lowest_product_category.head(num_of_products).values[::-1], y=lowest_product_category.head(num_of_products).index[::-1], palette=colors, orient="h", dodge=False, ax=ax)
