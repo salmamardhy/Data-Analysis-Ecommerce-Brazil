@@ -13,11 +13,11 @@ st.subheader('E-Commerce Public Dataset in Brazil')
 
 st.sidebar.header('Salma Mardhiyah')
 
-# Load example image
-example_image = "https://freeimage.host/i/JMPtJJp"
+# Corrected example_image variable
+example_image = '<a href="https://freeimage.host/i/JMPtJJp"><img src="https://iili.io/JMPtJJp.png" alt="JMPtJJp.png" border="0"></a>'
 
 # Display image in the sidebar
-st.sidebar.image(example_image, use_column_width=True)
+st.sidebar.markdown(example_image, unsafe_allow_html=True)
 num_of_products = st.sidebar.slider("Select the number of products to display", min_value=1, max_value=20, value=10)
 st.sidebar.subheader('Data Appear Parameter')
 year = st.sidebar.multiselect('Select year', ['2017', '2018'], ['2017', '2018'])
