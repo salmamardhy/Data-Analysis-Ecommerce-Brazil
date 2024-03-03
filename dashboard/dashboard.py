@@ -14,7 +14,7 @@ st.subheader('E-Commerce Public Dataset in Brazil')
 st.sidebar.header('Salma Mardhiyah')
 
 # Load example image
-example_image = "https://github.com/salmamardhy/Data-Analysis-Ecommerce-Brazil/raw/main/Images/Logo_Bangkit.png"
+example_image = "https://postimg.cc/XZpzbGnM"
 
 # Display image in the sidebar
 st.sidebar.image(example_image, use_column_width=True)
@@ -71,7 +71,7 @@ with tab2:
     st.plotly_chart(fig)
 
 with tab3:
-    st.header("Hottest Products")
+    st.markdown("### Hottest Products")
 
     # Top 10 categories with the highest number of sales
     top_product_category = orders_merge.groupby(by="product_category_name_english").order_id.nunique().sort_values(ascending=False)
@@ -79,7 +79,7 @@ with tab3:
     
 
     # Plot the top categories
-    st.subheader(f"Top {num_of_products} Product Categories with the Highest Sales:")
+    st.markdown(f"#### Top {num_of_products} Product Categories with the Highest Sales:")
     colors = ["blue"] + ['lightgrey'] * (num_of_products - 1)
     fig, ax = plt.subplots(figsize=(8, 4))
     sns.barplot(x=top_product_category.head(num_of_products).values, y=top_product_category.head(num_of_products).index, palette=colors, orient="h", dodge=False, ax=ax)
@@ -93,14 +93,14 @@ with tab3:
 
 
 with tab4:
-    st.header("Unpopular Products")
+    st.markdown("### Unpopular Products")
 
     # Top 10 categories with the lowest number of sales
     lowest_product_category = orders_merge.groupby(by="product_category_name_english").order_id.nunique().sort_values(ascending=True)
     lowest_index = lowest_product_category.idxmin()
 
     # Plot the bottom categories
-    st.subheader(f"Top {num_of_products} Product Categories with the Lowest Sales:")
+    st.markdown(f"#### Top {num_of_products} Product Categories with the Lowest Sales:")
     colors = ['lightgrey'] * (num_of_products - 1) + ["blue"]
     fig, ax = plt.subplots(figsize=(8, 4))
     sns.barplot(x=lowest_product_category.head(num_of_products).values[::-1], y=lowest_product_category.head(num_of_products).index[::-1], palette=colors, orient="h", dodge=False, ax=ax)
